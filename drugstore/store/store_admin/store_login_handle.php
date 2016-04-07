@@ -24,7 +24,7 @@
 	}else{
 		echo "<script> alert('用户密码错误')</script>";
 		// echo "<script> document.location='../store_login.html'</script>";
-		changePage();
+		changePage("store_login.html");
 	}
 	
 
