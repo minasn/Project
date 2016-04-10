@@ -1,3 +1,15 @@
+<?php
+  require_once('connect.php');
+  $sql="";
+  $query=mysql_query($sql);
+  if($query&&mysql_num_row($query)){
+    while($row = mysql_fetch_assoc($query)){
+      $data[]=$row;
+    }
+  }
+?>   
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -105,53 +117,48 @@
 
 		</div>
 
-			<div class="col-md-4" style="background-color: white;">
-	   	<form method="post" action="store_admin/store_requestOpen_handle.php" enctype="multipart/form-data">
-	   		 <p class="form-title" style="font-weight: bold;font-size: 25px;" >欢迎申请开店</p>
-	   		 <div row>
-	   		 	<div class="col-md-12">提示：为确保您的申请能通过，请填写真实信息。并选择适合您的宣传图</div>
-	   		 	<div class="col-md-4" style="height:20px"></div>
-	   		 </div>
- <div class="form-group">
-    <input type="text" class="form-control " id="storename" name="storename" placeholder="输入店名">
-  </div>
-  <div row>
-<div class="col-md-7"></div>
-<div class="col-md-4" style="height:7px"></div>
-</div>
-    <div class="form-group">
-    <input type="password" class="form-control" id="storeaddr" name="storeaddr" placeholder="输入地址">
-  </div>
-  <div row>
-	   		 	<div class="col-md-7"></div>
-	   		 	<div class="col-md-4" style="height:7px"></div>
-  </div>
-  <div class="form-group">
-    <input type="password" class="form-control" id="storekeepname" name="storekeepname" placeholder="输入备案人姓名">
-  </div>
-  <div row>
-	   		 	<div class="col-md-7"></div>
-	   		 	<div class="col-md-4" style="height:7px"></div>
-  </div>
-  <div class="form-group">
-    <input type="password" class="form-control" id="storekeepID" name="storekeepID" placeholder="输入备案人身份证号码">
-  </div>
-  <div row>
-	   		 	<div class="col-md-7"></div>
-	   		 	<div class="col-md-4" style="height:7px"></div>
-  </div>
-  <div class="form-group">
-    <input type="file" class="form-control" id="storepic" name="storepic">
-  </div>
-  <div row>
-	   		 	<div class="col-md-7"></div>
-	   		 	<div class="col-md-4" style="height:7px"></div>
-  </div>
-  
-    <button type="submit" class="btn btn-success btn-block">提交申请</button>
-    <a href="store_register.html">免费注册></a>
-</form>
-	   </div>
+      <div class="col-md-4" style="background-color: white;">
+        <form method="post" action="store_admin/store_requestOpen_handle.php" enctype="multipart/form-data">
+          <p class="form-title" style="font-weight: bold;font-size: 25px;" >欢迎申请开店</p>
+          <div row>
+            <div class="col-md-12">提示：为确保您的申请能通过，请填写真实信息。并选择适合您的宣传图</div>
+            <div class="col-md-4" style="height:20px"></div>
+          </div>
+          <div class="form-group">
+          <input type="text" class="form-control " id="storename" name="storename" placeholder="输入店名" value="<?php echo $data['storename']?>"></div>
+          <div row>
+            <div class="col-md-7"></div>
+            <div class="col-md-4" style="height:7px"></div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="storeaddr" name="storeaddr"value="<?php echo $data['storeaddr']?>" placeholder="输入地址"></div>
+          <div row>
+            <div class="col-md-7"></div>
+            <div class="col-md-4" style="height:7px"></div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="storekeepname" name="storekeepname" value="<?php echo $data['storekeepname']?>" placeholder="输入备案人姓名"></div>
+          <div row>
+            <div class="col-md-7"></div>
+            <div class="col-md-4" style="height:7px"></div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="storekeepID" name="storekeepID" value="<?php echo $data['storekeepID']?>"placeholder="输入备案人身份证号码"></div>
+          <div row>
+            <div class="col-md-7"></div>
+            <div class="col-md-4" style="height:7px"></div>
+          </div>
+          <div class="form-group">
+            <input type="file" class="form-control" id="storepic" name="storepic"></div>
+          <div row>
+            <div class="col-md-7"></div>
+            <div class="col-md-4" style="height:7px"></div>
+          </div>
+
+          <button type="submit" class="btn btn-success btn-block">提交申请</button>
+          <a href="store_register.html">免费注册></a>
+        </form>
+      </div>
 	    <div class="col-md-1"></div>
 			</div>
 	</div>		
