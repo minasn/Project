@@ -2,7 +2,7 @@
 	require_once('../connect.php');
 	session_start();
 	$_SESSION['store']=false;
-
+    $_SESSION['store_tele']=$_POST['store_tele'];
 	$store_tele=$_POST['store_tele'];
 	$store_password=$_POST['store_password'];
 	$store_swPWD=md5(sha1($store_password));
@@ -21,7 +21,7 @@
 
 	if($isFind==1){
 		$_SESSION['store']=true;
-		changePage("store_index.html");
+		changePage("store_requestOpen.php");
 
 
 	}else{

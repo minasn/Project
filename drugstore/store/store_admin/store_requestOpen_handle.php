@@ -19,7 +19,7 @@ $maxsize=1024;
 $type = strtolower(substr($storepic_name,strrpos($storepic_name,'.')+1)); 
 $allow_type = array('jpg','jpeg','gif','png'); //定义允许上传的类型
 
-if($storepic_file['erroe']==0){
+if($storepic_file['error']==0){
 	if($storepic_size>$maxsize){
 		echo "<script>alert('上传文件大小不符合规范');document.location='../store_requestOpen.html';</script>";
 	}
