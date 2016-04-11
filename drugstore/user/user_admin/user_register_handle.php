@@ -7,6 +7,8 @@
        $user_tel=$_POST['user_tel'];
 	   $user_password=$_POST['user_password'];
 	   $user_repassword=$_POST['user_repassword'];
+
+	   
 	   if(!preg_match("/^[0-9]{11}/",$user_tel)){
        echo "<script>alert('请输入正确手机号格式');</script>";
 	   echo "<script> document.location='../user_register.html'</script>";
@@ -18,8 +20,10 @@
 	   echo "<script> document.location='../user_register.html'</script>";
      
       }
-	   $sql="call p_user_register($user_tel,$user_password)";
-	   $result=mysql_query($sql)or die("SQL语句执行失败");
+
+       $user_sePWD=md5(sha1($user_password));
+	   $sql="call p_user_register('$user_tel','$user_sePWD')";
+	   $result=mysql_query($sql) or die("SQL语句执行失败");
 	   $row = mysql_fetch_row($result);
 		  
        if($row[0]=="!"){
