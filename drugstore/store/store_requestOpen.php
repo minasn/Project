@@ -1,10 +1,11 @@
 <?php
   require_once('connect.php');
     session_start();
-     $_SESSION['store_tele']='213';
+     //$_SESSION['store_tele']='213';
+    $_SESSION['store_tele']='18721382261';
      $store_tele=$_SESSION['store_tele'];
-   $query = mysql_query("select * from t_store where store_username=$store_tele;");
-    // $query = mysql_query("INSERT INTO t_store(store_username,store_password,store_address,store_permit) VALUES ('18721372629','123','华理','1');");插入一个permit为1测试
+    $query = mysql_query("select * from t_store where store_username=$store_tele;");
+    //$query = mysql_query("INSERT INTO t_store(store_username,store_password,store_address,store_permit) VALUES ('18721372629','123','华理','1');");//插入一个permit为1测试
  
  
 
@@ -132,7 +133,7 @@
           <div class="form-group">
           <input type="text" class="form-control " id="storename" name="storename"  value="<?php if(!empty($row['store_permit'])){
             if($row['store_permit']!=0){
-  echo $row['store_shopname'];}}?>"
+           echo $row['store_shopname'];}}?>"
   <?php 
             if($row['store_permit']==1||$row['store_permit']==2){
   echo 'readonly';}?> placeholder="输入店名" ></div>
