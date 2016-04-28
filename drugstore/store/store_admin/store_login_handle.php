@@ -3,8 +3,8 @@
 	session_start();
 	$_SESSION['store']=false;
     $_SESSION['store_tele']=$_POST['store_tele'];
-	$store_tele=$_POST['store_tele'];
-	$store_password=$_POST['store_password'];
+	$store_tele=addcslashes($_POST['store_tele']);
+	$store_password=addcslashes($_POST['store_password']);
 	$store_swPWD=md5(sha1($store_password));
 
 

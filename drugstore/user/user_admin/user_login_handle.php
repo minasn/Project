@@ -2,8 +2,8 @@
 
 require_once('../connect.php');
 session_start();
-$user_tele     =$_POST['user_tele'];
-$user_password =$_POST['user_password'];
+$user_tele     =addcslashes($_POST['user_tele']);
+$user_password =addcslashes($_POST['user_password']);
 $user_sePWD=md5(sha1($user_password));
 if(!preg_match("/^[0-9]{11}/",$user_tele)){
        echo "<script>alert('手机格式错误！');</script>";
