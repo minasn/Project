@@ -1,9 +1,9 @@
 <?php 
 	require_once('../connect.php');
 	
-	$store_tele       =$_POST['store_tele'];
-	$store_password   =$_POST['store_password'];
-	$store_rePassword =$_POST['store_rePassword'];
+	$store_tele       =addcslashes($_POST['store_tele']);
+	$store_password   =addcslashes($_POST['store_password']);
+	$store_rePassword =addcslashes($_POST['store_rePassword']);
 
 	if($store_password !== $store_rePassword){
 		echo "<script> alert('密码不相同');</script>";
