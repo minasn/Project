@@ -10,14 +10,14 @@
 		echo "<script> document.location='../store_register.html'</script>";
 		
 	}
-	if(!preg_match("/^[0-9]{11}/",$store_tele)){
-		echo "<script> alert('请输入正确的手机号');</script>";
-		echo "<script> document.location='../store_register.html'</script>";
-	}
+	// if(!preg_match("/^[0-9]{11}/",$store_tele)){
+	// 	echo "<script> alert('请输入正确的手机号');</script>";
+	// 	echo "<script> document.location='../store_register.html'</script>";
+	// }
 
-	$store_sePWD=md5(sha1($store_password));
+	//$store_sePWD=md5(sha1($store_password));
 	
-	$s="call p_store_register('$store_tele','$store_sePWD')";
+	$s="call p_store_register('$store_tele','$store_password')";
 	$result=mysql_query($s);
 	$row=mysql_fetch_row($result);
 

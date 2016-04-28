@@ -34,7 +34,7 @@
 		   if($row[0]=="#"){
 		   
 		   echo "<script>alert('注册成功');</script>";
-		   echo "<script> document.location='../user_register.html'</script>";
+		   echo "<script> document.location='../user_login.html'</script>";
 		   }
 	   
 	   

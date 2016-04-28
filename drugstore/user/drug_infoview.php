@@ -12,10 +12,18 @@ $sql="select *from t_drug where drug_id=$drug_id";
 <html>
 	<head>
 		<meta charset="UTF-8">
-	  <script type="text/javascript" src="../js/jquery-2.1.4.js"></script>
+	  	<script type="text/javascript" src="../js/jquery-2.1.4.js"></script>
+	  	
 		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<script type="text/javascript" src="./js/scripts.js"></script>
+		<script type="text/javascript">
+			function add() {
+				 //window.location.href="./user_accountinfo.html" ;
+				 document.location="./user_login.html";
+			}
+		</script>
 		<title>商品信息</title>
 	</head>
 	<body>
@@ -160,7 +168,7 @@ $sql="select *from t_drug where drug_id=$drug_id";
 					    <span id="plus" class="input-group-addon plus" onclick="plu()">+</span>
 					 </div>
 					<span class="help-block"></span>
-					<button type="submit" class="btn btn-success btn-block">加入购物车</button>
+					<button type="submit" id="addShop"  class="btn btn-success btn-block"><a href="./user_shoppingcart.html">加入购物车</a> </button>
 				</fieldset>
 			</form>
 			<div class="tabbable" id="tabs-945165" >

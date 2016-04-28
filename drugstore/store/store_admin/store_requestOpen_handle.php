@@ -3,7 +3,7 @@ header("Content-Type:text/html;charset=utf-8");
 session_start();
 
 //session传过来的号码，现在没传所以自己创建一个
-$_SESSION['store_tele']='18721382261';
+$_SESSION['store_tele']='111';
 $storename=$_POST['storename'];
 $storeaddr=$_POST['storeaddr'];
 $storekeepname=$_POST['storekeepname'];

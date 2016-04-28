@@ -14,7 +14,7 @@ $query = mysql_query($sql);
 	if($query&&mysql_num_rows($query)){
 		$_SESSION['user']=$user_tele;
 		echo "<script>alert('登陆成功');</script>";
-		echo "<script> document.location='../user_login.html'</script>";
+		echo "<script> document.location='../user_index.html'</script>";
 	}else{
 		//echo mysql_error();
 		echo "<script>alert('用户名/密码错误');</script>";
