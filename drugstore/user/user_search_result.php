@@ -1,8 +1,23 @@
 <?php
 require_once('connect.php');
 require_once('page.php');
-			session_start();
-			?>
+session_start();
+
+//$offset=$_GET['page'];
+if(!empty($_POST)){
+	   // 	echo "<script>alert('请输入搜索信息');document.location='user_search_result.php';</script>";
+	   // }
+
+	   $_SESSION['search']="%".$_POST['search']."%";
+	   $_SESSION['flag']=true;
+	   $search1=$_SESSION['search'];
+ $sql1="select * from t_drug where drug_key1 LIKE '$search1' or drug_gname LIKE '$search1' ";
+    $result1=mysql_query($sql1)or die("请重新搜索");
+     //$line=mysql_num_rows($result);
+$_SESSION['totalRows']=mysql_num_rows($result1);
+	
+	}			
+	   ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -146,16 +161,22 @@ require_once('page.php');
 		</div>
 		<div class="row  drug-list">
 		<?php
+		
+	   //  if(empty($_POST)){
+	   // // 	echo "<script>alert('请输入搜索信息');document.location='user_search_result.php';</script>";
+	   // // }
 
-	   if(!empty($_POST)){
-
-	   $search="%".$_POST['search']."%";
-         
-	   $sql="select * from t_drug where drug_key1 LIKE '$search' or drug_gname LIKE '$search'";
+	   // $_SESSION['search']="%".$_POST['search']."%";}
+      
+      $page=isset($_GET['page'])?$_GET['page']:1;
+      
+      //if(!isset($page));
+        $offset=($page-1)*6;
+      if(isset($_SESSION['search'])){
+        $search=$_SESSION['search'];
+	   $sql="select * from t_drug where drug_key1 LIKE '$search' or drug_gname LIKE '$search' limit {$offset},6";
     $result=mysql_query($sql)or die("请重新搜索");
      //$line=mysql_num_rows($result);
-
-
     while($row = mysql_fetch_assoc($result)){
   
 	
@@ -184,7 +205,8 @@ require_once('page.php');
 		<?php
 	}}?>
 	<?php
-	if(empty($_POST)){?>
+	//if(empty($_POST));
+	if(!isset($_SESSION['flag'])){?>
 	<div class="col-lg-4 col-xs-12">
 <div class="drug">
 				<div class="row">
@@ -291,13 +313,25 @@ require_once('page.php');
 			</div>
 		</div>
 		<?php
+
 	}
-		?>
+	
+		?></div>
+<?php
+if(isset($_SESSION['totalRows'])){
+	if($_SESSION['totalRows']>6)
+{   $totalPage=ceil($_SESSION['totalRows']/6);
+               ?>             <div style="margin-bottom: 0px">
+                            	<?php echo showPage($page, $totalPage);?>
+                            </div>
+                            
 	
 	
+<?php 
+}}
+?>
 
-
-		</div>
+		
 		
 			<!-- <div class="col-lg-4 col-xs-12">
 			<div class="drug">
@@ -384,6 +418,7 @@ require_once('page.php');
 	</div> --> 
 	
 	<footer>
+
 	   	<div class="container" align="center">
 	   		<span >Copyright.......</span>
 	   	</div>
