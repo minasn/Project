@@ -11,10 +11,10 @@ $storekeepname=$_POST['storekeepname'];
 $storekeepID=$_POST['storekeepID'];
 
 $_SESSION['store_tele']='18721382261';
-$storename=addcslashes($_POST['storename']);
-$storeaddr=addcslashes($_POST['storeaddr']);
-$storekeepname=addcslashes($_POST['storekeepname']);
-$storekeepID=addcslashes($_POST['storekeepID']);
+$storename=$_POST['storename'];
+$storeaddr=$_POST['storeaddr'];
+$storekeepname=$_POST['storekeepname'];
+$storekeepID=$_POST['storekeepID'];
 
 $storepic_file = $_FILES['storepic'];
 
