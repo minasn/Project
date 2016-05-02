@@ -3,6 +3,7 @@
     session_start();
      //$_SESSION['store_tele']='213';
     $_SESSION['store_tele']='18721382261';
+    //$_SESSION['store_tele']='213';
      $store_tele=$_SESSION['store_tele'];
     $query = mysql_query("select * from t_store where store_username=$store_tele;");
     //$query = mysql_query("INSERT INTO t_store(store_username,store_password,store_address,store_permit) VALUES ('18721372629','123','华理','1');");//插入一个permit为1测试
