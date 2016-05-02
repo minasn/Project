@@ -1,5 +1,6 @@
 <?php 
 	require_once('config.php');
+	require_once('mysql.func.php');
 	if(!($con=mysql_connect(HOST,USERNAME,PASSWORD))){
 		echo mysql_error();
 	}

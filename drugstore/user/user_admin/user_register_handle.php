@@ -4,11 +4,10 @@
 <body>
   <?php
   require_once('../connect.php');
-       $user_tel=$_POST['user_tel'];
-	   $user_password=$_POST['user_password'];
-	   $user_repassword=$_POST['user_repassword'];
+       $user_tel=addcslashes($_POST['user_tel']);
+	   $user_password=addcslashes($_POST['user_password']);
+	   $user_repassword=addcslashes($_POST['user_repassword']);
 
-	   
 	   if(!preg_match("/^[0-9]{11}/",$user_tel)){
        echo "<script>alert('请输入正确手机号格式');</script>";
 	   echo "<script> document.location='../user_register.html'</script>";
@@ -36,15 +35,6 @@
 		   echo "<script>alert('注册成功');</script>";
 		   echo "<script> document.location='../user_login.html'</script>";
 		   }
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	  
-
 		
 		
 		?>
