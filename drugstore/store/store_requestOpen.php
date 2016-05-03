@@ -1,12 +1,16 @@
 <?php
   require_once('connect.php');
     session_start();
-     //$_SESSION['store_tele']='213';
-    $_SESSION['store_tele']='111';
-   // $_SESSION['store_tele']='18721382261';
-    $store_tele=$_SESSION['store_tele'];
-    $query = mysql_query("select * from t_store where store_phone=$store_tele;");
-   // $query = mysql_query("INSERT INTO t_store(store_phone,store_password,store_address,store_permit) VALUES ('18721372629','123','华理','1');");//插入一个permit为1测试
+    
+    if($_SESSION['store_tele']){
+	    $store_tele=$_SESSION['store_tele'];
+	    $query = mysql_query("select * from t_store where store_phone=$store_tele;");
+		//session_unset($_SESSION['store_tele']);
+    }else{
+    	echo "<script> document.location='./store_login.html'</script>"; 
+    }
+
+
  
  
 

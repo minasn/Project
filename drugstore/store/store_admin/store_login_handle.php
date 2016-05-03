@@ -5,10 +5,8 @@
 
 	$store_tele=$_POST['store_tele'];
 	$store_password=$_POST['store_password'];
-	$store_tele=$_POST['store_tele'];
-	$store_password=$_POST['store_password'];
+	
 
-    $_SESSION['store_tele']=$_POST['store_tele'];
     $_SESSION['store_tele']=$_POST['store_tele'];
     $_SESSION['store']=false;
 
@@ -24,32 +22,18 @@
 	$query="select * from t_store where store_phone=$store_tele and store_password={$store_password}";
 	$result=mysql_query($query);
 	$isFind=mysql_num_rows($result);
-	// echo $isFind;
+
 
 	if($isFind==1){
 		$_SESSION['store']=true;
-		//alert("success");
-		changePage("store_index.html");
+		changePage("./store_requestOpen.php");
 	}else{
 		echo "<script> alert('用户密码错误')</script>";
-		// echo "<script> document.location='../store_login.html'</script>";
 		changePage("store_login.html");
 	}
-	
-
-
-
-
-
-
-
 
 	function changePage($address){
 		echo "<script> document.location='../$address'</script>";
 	}
-
-
-
-
  ?>
  
