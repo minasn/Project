@@ -143,7 +143,7 @@ $sql="select *from t_drug where drug_id=$drug_id";
 							</div>
 		</div>
 		<div class="col-md-4">
-			<form style="layout-grid: horizontal;">
+			<form  method="POST" action="user_shoppingcart.php" style="layout-grid: horizontal;">
 				<fieldset>
 					 <label id="drug_name"><?php  echo $row['drug_gname']?></label>
 					 <label class="pre-scrollable"></label>
@@ -168,7 +168,16 @@ $sql="select *from t_drug where drug_id=$drug_id";
 					    <span id="plus" class="input-group-addon plus" onclick="plu()">+</span>
 					 </div>
 					<span class="help-block"></span>
-					<button type="submit" id="addShop"  class="btn btn-success btn-block"><a href="./user_shoppingcart.html">加入购物车</a> </button>
+				
+
+					<input type='text' style="display: none" name="addShop" value='<?php echo 
+				 	$row['drug_id'];?>'>
+					<button type="submit" name="addShop"  class="btn btn-danger">
+					加入购物车 </button>
+
+					<!--<button type="submit" class="btn btn-danger">查看详情</button>-->
+					
+					
 				</fieldset>
 			</form>
 			<div class="tabbable" id="tabs-945165" >

@@ -1,3 +1,13 @@
+<?php
+require_once('connect.php');
+if(!empty($_POST)){
+	$drug_id=$_POST['addShop'];
+	$sql="select *from t_drug where drug_id=$drug_id";
+    $result=mysql_query($sql);
+    $row = mysql_fetch_assoc($result);
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -97,10 +107,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr >
+
+
+			<tr>
 				<td ><input class="check-one check" type="checkbox" /> </td>
 				<td class="goods">
-					<a href="#"><img src="../image/logo.jpg"></a><label>Item 1</label>
+					<a href="#"><img src="../image/logo.jpg"></a><label><?php echo $row['drug_gname']?></label>
 				</td>
 				<td class="number small-bold-red"><span>76.55</span></td>
 				<td class="input-group">
@@ -111,7 +123,8 @@
 				<td class="subtotal number small-bold-red">76.55</td>
 				<td class="operation"><span class="delete btn btn-xs btn-primary">删除</span></td>
 			</tr>
-			<tr>
+
+			<!-- <tr>
 				<td ><input class="check-one check" type="checkbox" /></td>
 				<td class="goods">
 					<a href="#"><img src="../image/logo.jpg"></a><label>Item 2</label>
@@ -152,7 +165,7 @@
 				</td>
 				<td class="subtotal number small-bold-red">1400</td>
 				<td class="operation"><span class="delete btn btn-xs btn-primary">删除</span></td>
-			</tr>
+			</tr> -->
 		</tbody>
 	</table>
 	<div class="navfooter" align="center">
