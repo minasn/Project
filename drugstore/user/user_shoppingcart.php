@@ -1,11 +1,13 @@
 <?php
-require_once('connect.php');
-if(!empty($_POST)){
-	$drug_id=$_POST['addShop'];
-	$sql="select *from t_drug where drug_id=$drug_id";
-    $result=mysql_query($sql);
-    $row = mysql_fetch_assoc($result);
-}
+	require_once('connect.php');
+//if(!empty($_POST)){
+//	$drug_id=$_POST['addShop'];
+//	$sql="select *from t_drug where drug_id=$drug_id";
+//    $result=mysql_query($sql);
+//    $row = mysql_fetch_assoc($result);
+//}
+		
+
 ?>
 
 <!DOCTYPE html>
@@ -108,64 +110,28 @@ if(!empty($_POST)){
 		</thead>
 		<tbody>
 
+		<?php
+			for($cur=0;$cur<4;$cur++) {
+				?>
 
-			<tr>
-				<td ><input class="check-one check" type="checkbox" /> </td>
-				<td class="goods">
-					<a href="#"><img src="../image/logo.jpg"></a><label><?php echo $row['drug_gname']?></label>
-				</td>
-				<td class="number small-bold-red"><span>76.55</span></td>
-				<td class="input-group">
-					<span class="input-group-addon minus">-</span>
-					<input type="text" class="number form-control input-sm" value="1" />
-					<span class="input-group-addon plus">+</span>
-				</td>
-				<td class="subtotal number small-bold-red">76.55</td>
-				<td class="operation"><span class="delete btn btn-xs btn-primary">删除</span></td>
-			</tr>
+				<tr>
+					<td><input class="check-one check" type="checkbox"/><?php echo 'test'?></td>
+					<td class="goods">
+						<a href="#"><img src="../image/logo.jpg"></a><label><?php echo $row['drug_gname'] ?></label>
+					</td>
+					<td class="number small-bold-red"><span>76.55</span></td>
+					<td class="input-group">
+						<span class="input-group-addon minus">-</span>
+						<input type="text" class="number form-control input-sm" value="1"/>
+						<span class="input-group-addon plus">+</span>
+					</td>
+					<td class="subtotal number small-bold-red">76.55</td>
+					<td class="operation"><span class="delete btn btn-xs btn-primary">删除</span></td>
+				</tr>
+				<?php
+			}
+		?>
 
-			<!-- <tr>
-				<td ><input class="check-one check" type="checkbox" /></td>
-				<td class="goods">
-					<a href="#"><img src="../image/logo.jpg"></a><label>Item 2</label>
-				</td>
-				<td class="number small-bold-red"><span>1100</span></td>
-				<td class="input-group">
-					<span class="input-group-addon minus">-</span>
-					<input type="text" class="number form-control input-sm" value="1" />
-					<span class="input-group-addon plus">+</span>
-				</td>
-				<td class="subtotal number small-bold-red">1100</td>
-				<td class="operation"><span class="delete btn btn-xs btn-primary">删除</span></td>
-			</tr>
-			<tr>
-				<td ><input class="check-one check" type="checkbox" /></td>
-				<td class="goods">
-					<a href="#"><img src="../image/logo.jpg"></a><label>Item 3</label>
-				</td>
-				<td class="number small-bold-red"><span>1200</span></td>
-				<td class="input-group">
-					<span class="input-group-addon minus">-</span>
-					<input type="text" class="number form-control input-sm" value="1" />
-					<span class="input-group-addon plus">+</span>
-				</td>
-				<td class="subtotal number small-bold-red">1200</td>
-				<td class="operation"><span class="delete btn btn-xs btn-primary">删除</span></td>
-			</tr>
-			<tr>
-				<td ><input class="check-one check" type="checkbox" /></td>
-				<td class="goods">
-					<a href="#"><img src="../image/logo.jpg"></a><label>Item 4</label>
-				</td>
-				<td class="number small-bold-red"><span>1400</span></td>
-				<td class="input-group">
-					<span class="input-group-addon minus">-</span>
-					<input type="text" class="number form-control input-sm" value="1" />
-					<span class="input-group-addon plus">+</span>
-				</td>
-				<td class="subtotal number small-bold-red">1400</td>
-				<td class="operation"><span class="delete btn btn-xs btn-primary">删除</span></td>
-			</tr> -->
 		</tbody>
 	</table>
 	<div class="navfooter" align="center">
