@@ -1,12 +1,18 @@
 <?php
 require_once('connect.php');
-if(!empty($_POST)){
-$drug_id=$_POST['hidden'];
-$sql="select *from t_drug where drug_id=$drug_id";
+session_start();
+
+ if(!empty($_POST)){
+ $drug_id=$_POST['hidden'];
+    
+    $_SESSION['drugid']=$drug_id;
+
+	$sql="select *from t_drug where drug_id=$drug_id";
     $result=mysql_query($sql);
     $row = mysql_fetch_assoc($result);
 
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -143,7 +149,7 @@ $sql="select *from t_drug where drug_id=$drug_id";
 							</div>
 		</div>
 		<div class="col-md-4">
-			<form  method="POST" action="user_shoppingcart.php" style="layout-grid: horizontal;">
+			<form  method="POST" action="user_admin/drug_infoview_handle.php" style="layout-grid: horizontal;">
 				<fieldset>
 					 <label id="drug_name"><?php  echo $row['drug_gname']?></label>
 					 <label class="pre-scrollable"></label>
@@ -170,7 +176,7 @@ $sql="select *from t_drug where drug_id=$drug_id";
 					<span class="help-block"></span>
 				
 
-					<input type='text' style="display: none" name="addShop" value='<?php echo 
+					<input type='text' style="display: none" name="addShopDrug" value='<?php echo 
 				 	$row['drug_id'];?>'>
 					<button type="submit" name="addShop"  class="btn btn-danger">
 					加入购物车 </button>
