@@ -8,7 +8,18 @@
 //    $row = mysql_fetch_assoc($result);
 //}
 	session_start();
-	$user_name=$_SESSION['user'];
+	// $user_name=$_SESSION['user'];
+	$user_name='18721382260';
+	$sql="select * from t_order";
+	$result=mysql_query($sql);
+	$max_idx=0;
+	while($row=mysql_fetch_assoc($result)) {
+		if ($max_idx < $row['order_id']) {
+			$max_idx = $row['order_id'];
+		}
+	}
+
+	$max_idx=$max_idx+1;
 
 	//用户名
 	$sql="select * from t_car where use_username='$user_name'";
@@ -18,14 +29,12 @@
 
 	while($row=mysql_fetch_assoc($result)){
 
-		$arrayInsert=array('order_id'=>'7','user_username'=>$row['use_username'],'store_id'=>$row['store_id'],'car_amount'=>$row['car_amount']);
-		insert('t_order',$arrayInsert);
+		$arrayInsert=array('order_id'=>$max_idx,'user_username'=>$row['use_username'],'store_id'=>$row['store_id'],'car_amount'=>$row['car_amount']);
+		$id=insert('t_order',$arrayInsert);
 
 	}
 
 	delete('t_car',"use_username='$user_name'");
-
-	
 
 
 ?>
