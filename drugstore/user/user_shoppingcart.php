@@ -18,12 +18,12 @@
 
 	while($row=mysql_fetch_assoc($result)){
 
-		$arrayInsert=array('order_id'=>'1','user_username'=>$row['use_username'],'store_id'=>$row['store_id'],'car_amount'=>$row['car_amount']);
-		$id=insert('t_order',$arrayInsert);
+		$arrayInsert=array('order_id'=>'7','user_username'=>$row['use_username'],'store_id'=>$row['store_id'],'car_amount'=>$row['car_amount']);
+		insert('t_order',$arrayInsert);
 
 	}
 
-	delete('t_car','use_username="$user_name"');
+	delete('t_car',"use_username='$user_name'");
 
 	
 
