@@ -1,12 +1,32 @@
 <?php
 	require_once('connect.php');
+	//require_once('mysql.func.php');
 //if(!empty($_POST)){
 //	$drug_id=$_POST['addShop'];
 //	$sql="select *from t_drug where drug_id=$drug_id";
 //    $result=mysql_query($sql);
 //    $row = mysql_fetch_assoc($result);
 //}
-		
+	session_start();
+	$user_name=$_SESSION['user'];
+
+	//用户名
+	$sql="select * from t_car where use_username='$user_name'";
+
+	$result=mysql_query($sql);
+
+
+	while($row=mysql_fetch_assoc($result)){
+
+		$arrayInsert=array('order_id'=>'1','user_username'=>$row['use_username'],'store_id'=>$row['store_id'],'car_amount'=>$row['car_amount']);
+		$id=insert('t_order',$arrayInsert);
+
+	}
+
+	delete('t_car','use_username="$user_name"');
+
+	
+
 
 ?>
 
@@ -26,7 +46,7 @@
             <a id="SN_DOMAIN" href="" title="药店" name="Logo"><img class="lg-logo" src="../image/logo.png" alt="苏宁易购"/></a>
             </div>
             <div class="user"align="right">
-       
+
 				<div class="dropdown pull-right">
 					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">用户名001<strong class="caret"></strong></a>
 					<ul class="dropdown-menu">
@@ -45,10 +65,10 @@
 						<li>
 							<a href="#">退出</a>
 						</li>
-						
+
 					</ul>
 				</div>
-	
+
             </div>
             </div>
             <div class="container">
@@ -105,7 +125,7 @@
 				<th style="width:100px;"><label>单价</label></th>
 				<th style="width:120px;"><label>数量</label></th>
 				<th style="width:100px;"><label>小计</label></th>
-				<th style="width:40px;"><label>操作</label></th>	
+				<th style="width:40px;"><label>操作</label></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -135,28 +155,28 @@
 		</tbody>
 	</table>
 	<div class="navfooter" align="center">
-		                   <nav>  
-                        <ul class="pagination pagination-sm">  
-                            <li class="disabled">  
-                                <a href="#" aria-label="Previous">  
-                                    <span aria-hidden="true">«</span>  
-                                </a>  
-                            </li>  
-                            <li class="active"><a href="#">1</a></li>  
-                            <li><a href="#">2</a></li>  
-                            <li><a href="#">3</a></li>  
-                            <li><a href="#">4</a></li>  
-                            <li><a href="#">5</a></li>  
-                            <li>  
-                                <a href="#" aria-label="Next">  
-                                    <span aria-hidden="true">»</span>  
-                                </a>  
-                            </li>  
-                        </ul>  
-                    </nav>  
+		                   <nav>
+                        <ul class="pagination pagination-sm">
+                            <li class="disabled">
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">«</span>
+                                </a>
+                            </li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">»</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
 	</div>
 
-                
+
 	<div class="row">
 		<div class="col-md-12 col-lg-12 col-sm-12">
 			<div style="border-top:1px solid gray;padding:4px 10px;">
@@ -173,15 +193,15 @@
 				</div>
 					</div>
 					<div class="col-md-1">
-					 <button type="button" class="btn btn-primary btn-sm">  
-                            <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>去结算 
+					 <button type="button" class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>去结算
                         </button>
 					</div>
 				</div>
-				
-				
+
+
 			</div>
-			 
+
 		</div>
 	</div>
 	<script>
@@ -195,7 +215,7 @@
      	$(cartTable).find(".check-all").prop("checked", items.find(":checkbox:checked").length == items.length);
          getTotal();
     });
-    
+
     /*
      * 计算购物车中每一个产品行的金额小计
      *
@@ -208,7 +228,7 @@
         var result = price * qty; //计算金额小计
         $(row).find(".subtotal").text(result.toFixed(2)); //将计算好的金额小计写入到“小计”栏位中
     };
-    
+
     /*
      * 计算购物车中产品的累计金额
      *
@@ -224,12 +244,12 @@
                 qtyTotal += parseInt($(this).find(":text").val()); //累计产品购买数量
                 priceTotal += parseFloat($(this).find(".subtotal").text()); //累计产品金额
             }
-        });      
+        });
         $("#itemCount").text(itemCount);
         $("#qtyCount").text(qtyTotal);
 	$("#priceTotal").text(priceTotal.toFixed(2));
     };
-    
+
 //为数量调整的＋ －号提供单击事件，并重新计算产品小计
     /*
      * 为购物车中每一行绑定单击事件，以及每行中的输入框绑定键盘事件
@@ -240,7 +260,7 @@
      *
      */
     $(cartTable).find("tr:gt(0)").each(function() {
-	var input = $(this).find(":text");	
+	var input = $(this).find(":text");
 	//为数量输入框添加事件，计算金额小计，并更新总计
 	$(input).keyup(function() {
 	var val = parseInt($(this).val());
@@ -273,14 +293,14 @@
     });
     });
 	</script>
-	
+
 </div>
 
 <footer>
 	   	<div class="container" align="center">
 	   		<span >Copyright.......</span>
 	   	</div>
-	   	
+
 	   </footer>
 	</body>
 </html>
