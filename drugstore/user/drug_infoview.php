@@ -2,8 +2,8 @@
 require_once('connect.php');
 session_start();
 
- if(!empty($_POST)){
- $drug_id=$_POST['hidden'];
+ if(!empty($_GET)){
+ $drug_id=$_GET['hidden'];
     
     $_SESSION['drugid']=$drug_id;
 
@@ -149,7 +149,7 @@ session_start();
 							</div>
 		</div>
 		<div class="col-md-4">
-			<form  method="POST" action="user_admin/drug_infoview_handle.php" style="layout-grid: horizontal;">
+			<form  method="GET" action="user_admin/drug_infoview_handle.php" style="layout-grid: horizontal;">
 				<fieldset>
 					 <label id="drug_name"><?php  echo $row['drug_gname']?></label>
 					 <label class="pre-scrollable"></label>

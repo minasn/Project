@@ -4,17 +4,18 @@ session_start();
 
 //session传过来的号码，现在没传所以自己创建一个
 
-$_SESSION['store_tele']='111';
+// $_SESSION['store_tele']='111';
+
 $storename=$_POST['storename'];
 $storeaddr=$_POST['storeaddr'];
 $storekeepname=$_POST['storekeepname'];
 $storekeepID=$_POST['storekeepID'];
 
-$_SESSION['store_tele']='18721382261';
-$storename=$_POST['storename'];
-$storeaddr=$_POST['storeaddr'];
-$storekeepname=$_POST['storekeepname'];
-$storekeepID=$_POST['storekeepID'];
+// $_SESSION['store_tele']='18721382261';
+
+
+
+
 
 $storepic_file = $_FILES['storepic'];
 

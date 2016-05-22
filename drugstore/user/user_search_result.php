@@ -4,11 +4,11 @@ require_once('page.php');
 session_start();
 
 //$offset=$_GET['page'];
-if(!empty($_POST)){
+if(!empty($_GET)){
 	   // 	echo "<script>alert('请输入搜索信息');document.location='user_search_result.php';</script>";
 	   // }
 
-	   $_SESSION['search']="%".$_POST['search']."%";
+	   $_SESSION['search']="%".$_GET['search']."%";
 	   $_SESSION['flag']=true;
 	   $search1=$_SESSION['search'];
  $sql1="select * from t_drug where drug_key1 LIKE '$search1' or drug_gname LIKE '$search1' ";
@@ -89,7 +89,7 @@ $_SESSION['totalRows']=mysql_num_rows($result1);
             </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left" method='post' action='user_search_result.php' role="search">
+      <form class="navbar-form navbar-left" method='get' action='user_search_result.php' role="search">
        <div class="row">
   <div class="col-lg-12">
    <div class="input-group">
@@ -194,7 +194,7 @@ $_SESSION['totalRows']=mysql_num_rows($result1);
 					</br>
 					<span id="drugstore" class="btn-primary">自营</span>
 					<p id="drugstore"><?php echo "名称：".$row['drug_gname']."<br>"."规格：".$row['drug_specify']."<br>"."功能主治：".$row['drug_indicate'];?></p>
-					<form method="post" action="drug_infoview.php">
+					<form method="get" action="drug_infoview.php">
 					<input type='text' style="display: none" name="hidden"value='<?php echo $row['drug_id'];?>'>
 					<button type="submit" class="btn btn-danger">查看详情</button>
 					</form>

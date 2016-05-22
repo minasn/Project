@@ -8,8 +8,8 @@
 //    $row = mysql_fetch_assoc($result);
 //}
 	session_start();
-	// $user_name=$_SESSION['user'];
-	$user_name='18721382260';
+	$user_name=$_SESSION['user'];
+	// $user_name='18721382260';
 	$sql="select * from t_order";
 	$result=mysql_query($sql);
 	$max_idx=0;
@@ -29,12 +29,12 @@
 
 	while($row=mysql_fetch_assoc($result)){
 
-		$arrayInsert=array('order_id'=>$max_idx,'user_username'=>$row['use_username'],'store_id'=>$row['store_id'],'car_amount'=>$row['car_amount']);
+		$arrayInsert=array('order_id'=>$max_idx,'user_username'=>$row['use_username'],'store_id'=>$row['store_id'],'drug_id'=>$row['drug_id'],'car_amount'=>$row['car_amount']);
 		$id=insert('t_order',$arrayInsert);
 
 	}
 
-	delete('t_car',"use_username='$user_name'");
+//	delete('t_car',"use_username='$user_name'");
 
 
 ?>
@@ -140,13 +140,20 @@
 		<tbody>
 
 		<?php
-			for($cur=0;$cur<4;$cur++) {
+			//for($cur=0;$cur<4;$cur++) {
+		//'SELECT * from t_car a,t_drug b where a.use_username='12345678907' and a.drug_id=b.drug_id'
+
+			//$sql="select * from t_car where use_username='$user_name'";
+		$sql="SELECT * from t_car a,t_drug b where a.use_username='$user_name' and a.drug_id=b.drug_id";
+			$result=mysql_query($sql);
+			
+			while($row=mysql_fetch_assoc($result)){
 				?>
 
 				<tr>
-					<td><input class="check-one check" type="checkbox"/><?php echo 'test'?></td>
+					<td><input class="check-one check" type="checkbox"/><?php echo $row['store_id']?></td>
 					<td class="goods">
-						<a href="#"><img src="../image/logo.jpg"></a><label><?php echo $row['drug_gname'] ?></label>
+						<a href="#"><img src="../image/logo.jpg"></a><label><?php echo $row['drug_name'] ?></label>
 					</td>
 					<td class="number small-bold-red"><span>76.55</span></td>
 					<td class="input-group">
@@ -159,6 +166,7 @@
 				</tr>
 				<?php
 			}
+			//delete('t_car',"use_username='$user_name'");
 		?>
 
 		</tbody>
@@ -201,11 +209,15 @@
 					<span id="selectedTotal"></span>
 				</div>
 					</div>
+					<form method="POST" action="user_admin/user_shoppingcart_handle.php">
 					<div class="col-md-1">
-					 <button type="button" class="btn btn-primary btn-sm">
+					 <!-- <button type="button" class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>去结算
-                        </button>
+                        </button> -->
+                        <button type="submit" class="btn btn-primary btn-sm">去结算</button>
 					</div>
+					</form>
+					
 				</div>
 
 

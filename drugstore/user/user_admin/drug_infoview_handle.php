@@ -7,11 +7,11 @@ session_start();
 $username=$_SESSION['user'];
  // $username="18721382260";
 
-$addShopDrug=$_POST['addShopDrug'];// 这个等数据库调好再改
-$sql="select * from t_stdrug where drug_id=1";
+$addShopDrug=$_GET['addShopDrug'];// 这个等数据库调好再改
+$sql="select * from t_stdrug where drug_id='$addShopDrug'";
 $res=fetchOne($sql);
 
-
+// echo $res['drug_id'];
 
 $drug_id=$res['drug_id']; //药品ID
 $store_id=$res['store_id'];//店家ID
